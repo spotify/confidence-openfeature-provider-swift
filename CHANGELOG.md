@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.5](https://github.com/spotify/confidence-openfeature-provider-swift/compare/0.1.4...0.1.5) (2024-03-14)
+
+
+### 📚 Documentation
+
+* Add apply documentation note ([#80](https://github.com/spotify/confidence-openfeature-provider-swift/issues/80)) ([1bd9525](https://github.com/spotify/confidence-openfeature-provider-swift/commit/1bd9525e5e0a7d40834aba7bc962225978a36f91))
+
 ## [0.1.4](https://github.com/spotify/confidence-openfeature-provider-swift/compare/0.1.3...0.1.4) (2024-02-08)
 
 

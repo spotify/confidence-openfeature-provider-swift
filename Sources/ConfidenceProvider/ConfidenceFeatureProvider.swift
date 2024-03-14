@@ -402,7 +402,7 @@ extension ConfidenceFeatureProvider {
 extension ConfidenceFeatureProvider {
     public struct Builder {
         var options: ConfidenceClientOptions
-        let metadata = ConfidenceMetadata(version: "0.1.4") // x-release-please-version
+        let metadata = ConfidenceMetadata(version: "0.1.5") // x-release-please-version
         var session: URLSession?
         var localOverrides: [String: LocalOverride] = [:]
         var storage: Storage = DefaultStorage.resolverFlagsCache()
