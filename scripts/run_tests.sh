@@ -16,7 +16,6 @@ fi
 (cd $root_dir &&
     TEST_RUNNER_CLIENT_TOKEN=$test_runner_client_token TEST_RUNNER_TEST_FLAG_NAME=$2 xcodebuild \
         -quiet \
-        -scheme ConfidenceProvider \
-        -sdk "iphonesimulator" \
+        -scheme Confidence-Package \
         -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=16.2' \
         test)

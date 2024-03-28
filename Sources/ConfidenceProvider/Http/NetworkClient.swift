@@ -1,4 +1,5 @@
 import Foundation
+import Confidence
 
 final class NetworkClient: HttpClient {
     private let headers: [String: String]

@@ -1,4 +1,5 @@
 import ConfidenceProvider
+import Confidence
 import OpenFeature
 import SwiftUI
 
@@ -21,17 +22,21 @@ extension ConfidenceDemoApp {
         }
 
         // If we have no cache, then do a fetch first.
-        var initializationStratgey: InitializationStrategy = .activateAndFetchAsync
+        var initializationStrategy: InitializationStrategy = .activateAndFetchAsync
         if ConfidenceFeatureProvider.isStorageEmpty() {
-            initializationStratgey = .fetchAndActivate
+            initializationStrategy = .fetchAndActivate
         }
 
-        let provider = ConfidenceFeatureProvider
-            .Builder(credentials: .clientSecret(secret: secret))
-            .with(initializationStrategy: initializationStratgey)
+        let confidence = Confidence.Builder(clientSecret: secret)
+            .withInitializationstrategy(initializationStrategy: initializationStrategy)
             .build()
+        let provider = ConfidenceFeatureProvider(confidence: confidence)
+
         // NOTE: Using a random UUID for each app start is not advised and can result in getting stale values.
         let ctx = MutableContext(targetingKey: UUID.init().uuidString, structure: MutableStructure())
-        OpenFeatureAPI.shared.setProvider(provider: provider, initialContext: ctx)
+        Task {
+            await OpenFeatureAPI.shared.setProviderAndWait(provider: provider, initialContext: ctx)
+            confidence.send(eventName: "my_event")
+        }
     }
 }
